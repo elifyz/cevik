@@ -12,9 +12,9 @@ const schema = mongoose.Schema({
     }
 });
 
-class Users extends mongoose.Model {
+class Exercises extends mongoose.Model {
 
 }
 
-schema.loadClass(Users);
-module.exports = mongoose.model("users", schema);
+schema.loadClass(Exercises);
+module.exports = mongoose.model("exercises", schema);

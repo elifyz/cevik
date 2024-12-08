@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const Users = require("../db/models/Users");
+const Exercises = require("../db/models/Exercises");
 const Response = require("../lib/Response");
 const CustomError = require("../lib/Error");
 const Enum = require("../config/Enum");
@@ -9,8 +9,8 @@ const Enum = require("../config/Enum");
 /* GET users listing. */
 router.get('/', async(req, res, next) => {
   try{
-    let users = await Users.find({});
-    res.json(Response.successResponse(users));
+    let exercises = await Exercises.find({});
+    res.json(Response.successResponse(exercises));
 
   }catch(err){
     let errorResponse = Response.errorResponse(err);
@@ -23,7 +23,7 @@ router.post("/add", async(req,res) => {
   try{
     if(!body.user_id) throw new CustomError(Enum.HTTP_CODES.BAD_REQUEST, "Error");
 
-    await Users.create({
+    await Exercises.create({
       user_id : body.user_id,
       exercise_plan_id : body.exercise_plan_id,
       exercise_date : body.exercise_date
@@ -56,7 +56,7 @@ router.post("/delete", async(req, res) => {
     let body = req.body;
     if(!body._id) throw new CustomError(Enum.HTTP_CODES.BAD_REQUEST, "Error");
 
-    await Users.deleteOne({_id: body._id});
+    await Exercises.deleteOne({_id: body._id});
 
     res.json(Response.successResponse({success: true}));
 
