@@ -36,19 +36,6 @@ router.post("/add", async(req,res) => {
   }
 });
 
-/*
-router.post("/update", async(req, res) =>{
-  try{
-    let body = req.body;
-    let updates = {};
-    if()
-  }catch(err){
-    let errorResponse = Response.errorResponse(err);
-    res.status(errorResponse.code).json(errorResponse);
-  }
-});
-*/
-
 router.post("/delete", async(req, res) => {
   let body = req.body;
 
@@ -66,33 +53,5 @@ router.post("/delete", async(req, res) => {
     res.status(errorResponse.code).json(errorResponse);
   }
 });
-
-/*
-
-router.post("/register", async(req,res) => {
-  let body = req.body;
-
-  try{
-    let user = await Users.findOne({});
-
-    if(user){
-     return res.sendStatus(Enum.HTTP_CODES.NOT_FOUND);
-    }
-
-    if(!body.user_id) throw new CustomError(Enum.HTTP_CODES.BAD_REQUEST, "Error");
-
-    await Users.create({
-      user_id : body.user_id,
-      exercise_plan_id : body.exercise_plan_id,
-      exercise_date : body.exercise_date
-    });
-
-    res.status(Enum.HTTP_CODES.CREATED).json(Response.successResponse({success: true}, Enum.HTTP_CODES.CREATED));
-  }catch(err){
-    let errorResponse = Response.errorResponse(err);
-    res.status(errorResponse.code).json(errorResponse);
-  }
-});
-*/
 
 module.exports = router;
